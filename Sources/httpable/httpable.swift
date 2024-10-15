@@ -13,7 +13,7 @@ public enum APIPath {
          param(key: String)
 }
 
-struct Query {
+public struct Query {
     var key: String
     var value: String
     init(key: String,_ value: String) {
@@ -21,7 +21,7 @@ struct Query {
         self.value = value
     }
 }
-struct Param {
+public struct Param {
     var key: String
     var value: String
     init(key: String,_ value: String) {
@@ -58,9 +58,9 @@ struct Res<B> {
 }
 
 
-struct Bodyless: Codable {}
+public struct Bodyless: Codable {}
 
-class Gettable<ResultBody: Codable> {
+public class Gettable<ResultBody: Codable> {
     private var url_path: String
     let request = Req<Bodyless>()
     init(_ path: [APIPath]) {
@@ -113,7 +113,7 @@ class Gettable<ResultBody: Codable> {
     }
 }
 
-struct Postable<RequestBody: Codable, ResultBody: Codable> {
+public struct Postable<RequestBody: Codable, ResultBody: Codable> {
     private var url_path: String
     let request = Req<RequestBody>()
     init(_ path: [APIPath]) {
