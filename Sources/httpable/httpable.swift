@@ -16,7 +16,7 @@ public enum APIPath {
 public struct Query {
     var key: String
     var value: String
-    init(key: String,_ value: String) {
+    public init(key: String,_ value: String) {
         self.key = key
         self.value = value
     }
@@ -24,13 +24,13 @@ public struct Query {
 public struct Param {
     var key: String
     var value: String
-    init(key: String,_ value: String) {
+    public init(key: String,_ value: String) {
         self.key = key
         self.value = value
     }
 }
 
-struct Req<B: Codable> {
+public struct Req<B: Codable> {
     var params: [Param] = []
     var query: [Query] = []
     var body: B? = nil
@@ -51,7 +51,7 @@ struct Req<B: Codable> {
         return URL(string: full.replacingOccurrences(of: " ", with: ""))
     }
 }
-struct Res<B> {
+public struct Res<B> {
     var response: HTTPURLResponse?
     var body: B?
     var error: Error?
@@ -62,8 +62,8 @@ public struct Bodyless: Codable {}
 
 public class Gettable<ResultBody: Codable> {
     private var url_path: String
-    let request = Req<Bodyless>()
-    init(_ path: [APIPath]) {
+    public let request = Req<Bodyless>()
+    public init(_ path: [APIPath]) {
         var url_path = ""
         for p in path {
             switch p {
@@ -76,7 +76,7 @@ public class Gettable<ResultBody: Codable> {
         self.url_path = url_path
     }
     
-    func get<RequestBody: Codable>(with request: Req<RequestBody>,_ handler: @escaping (Res<ResultBody>) -> Void) {
+    public func get<RequestBody: Codable>(with request: Req<RequestBody>,_ handler: @escaping (Res<ResultBody>) -> Void) {
         var res = Res<ResultBody>()
         guard let url = request.GenerateURL(url_path: url_path) else  {  res.error = URLError(.badURL); return }
         var req = URLRequest(url: url)
@@ -115,8 +115,8 @@ public class Gettable<ResultBody: Codable> {
 
 public struct Postable<RequestBody: Codable, ResultBody: Codable> {
     private var url_path: String
-    let request = Req<RequestBody>()
-    init(_ path: [APIPath]) {
+    public let request = Req<RequestBody>()
+    public init(_ path: [APIPath]) {
         var url_path = ""
         for p in path {
             switch p {
@@ -129,7 +129,7 @@ public struct Postable<RequestBody: Codable, ResultBody: Codable> {
         self.url_path = url_path
     }
     
-    func post(with request: Req<RequestBody>,_ handler: @escaping (Res<ResultBody>) -> Void) {
+    public func post(with request: Req<RequestBody>,_ handler: @escaping (Res<ResultBody>) -> Void) {
         var res = Res<ResultBody>()
         guard let url = request.GenerateURL(url_path: url_path) else  {  res.error = URLError(.badURL); return }
         var req = URLRequest(url: url)
