@@ -31,9 +31,9 @@ public struct Param {
 }
 
 public struct Req<B: Codable> {
-    var params: [Param] = []
-    var query: [Query] = []
-    var body: B? = nil
+    public var params: [Param] = []
+    public var query: [Query] = []
+    public var body: B? = nil
 
     fileprivate func GenerateURL(url_path: String) -> URL? {
         var newPath = url_path
@@ -52,9 +52,9 @@ public struct Req<B: Codable> {
     }
 }
 public struct Res<B> {
-    var response: HTTPURLResponse?
-    var body: B?
-    var error: Error?
+    public var response: HTTPURLResponse?
+    public var body: B?
+    public var error: Error?
 }
 
 
