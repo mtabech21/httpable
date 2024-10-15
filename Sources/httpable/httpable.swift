@@ -8,7 +8,7 @@ class http {
 }
 
 
-enum APIPath {
+public enum APIPath {
     case to(String),
          param(key: String)
 }
