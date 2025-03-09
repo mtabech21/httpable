@@ -3,10 +3,7 @@
 
 Simplifying HTTP requests in Swift with Gettable & Postable.
 
-## Setup
-gfdfg
-
-### GET - `Gettable`
+## GET - `Gettable`
 
 #### Creating instance:
 ```swift
@@ -43,7 +40,7 @@ gettable.get(with: request) { response in
 }
 ```
 
-### POST - `Postable`
+## POST - `Postable`
 ```swift
 let postable = Postable<RequestBody,ResponseBody>([APIPath.to("foo")])
 
