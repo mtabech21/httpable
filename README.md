@@ -37,9 +37,8 @@ let gettable = Gettable<AnyCodableResponseBody>([
     APIPath.param(key: "id")
 ])
 ```
-```console
-https://example.com/foo/bar/{:id}
-```
+> https://example.com/foo/bar/{:id}
+
 
 #### Preparing request:
 ```swift
@@ -49,17 +48,15 @@ var request = gettable.request
 ```swift
 request.params.append(Param(key: "id", "001"))
 ```
-```console
-// https://example.com/foo/bar/001
-```
+> https://example.com/foo/bar/001
+
 #### Adding queries:
 ```swift
 request.query.append(Query(key: "date", "2024-11-21"))
 request.query.append(Query(key: "active", "true"))
 ```
-```console
-// https://example.com/foo/bar/001?date=2024-11-21&active=true
-```
+> https://example.com/foo/bar/001?date=2024-11-21&active=true
+
 #### Getting:
 ```swift
 gettable.get(with: request) { response in 
