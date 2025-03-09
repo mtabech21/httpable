@@ -6,13 +6,15 @@ Simplifying HTTP requests in Swift with Gettable & Postable.
 ## Configure
 
 Add these lines in the main App struct of your Swift project.
-
+`import HTTPable`
 ```swift
 let configs = HTTPConfig(baseURL: "https://example.com")
 HTTPable.configure(configs)
 ```
 #### Example:
 ```swift
+import HTTPable
+
 @main
 struct myApp: App {
 
